@@ -37,7 +37,7 @@ export default function Login() {
     
     return (
         <>
-            <form onSubmit={handleSubmit} className='border  bg-[#601A35] border-gray-500 container w-1/3 mx-auto flex px-4 flex-col h-[550px]  py-8 rounded-md' >
+            <form onSubmit={handleSubmit} className='border  bg-[#601A35] border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 flex-col h-[550px]  py-8 rounded-md' >
 
                 <div>
                     <input
@@ -63,7 +63,7 @@ export default function Login() {
                         onBlur={formik.handleBlur}
                         className='border border-gray-300 px-2 py-1 w-full rounded-md mb-3' type='password' placeholder='Enter password' />
                     {formik.errors.password && formik.touched.password ? (
-                        <div className='text-red-600 font-semibold mt-2'>
+                        <div className='text-white font-semibold mt-2'>
                             *{formik.errors.password}
                         </div>
                     ) : ('')}
@@ -72,7 +72,7 @@ export default function Login() {
 
                 <button 
                 disabled={!formik.isValid || formik.isSubmitting}
-                className='bg-white text-purple-800 rounded-md px-2 py-1 w-1/2 mx-auto'  > Login</button>
+                className='bg-white text-[#601A35] rounded-md px-2 py-1 w-1/2 mx-auto'  > Login</button>
             </form>
         </>
     )

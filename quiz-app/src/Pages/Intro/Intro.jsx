@@ -7,7 +7,7 @@ export default function Intro() {
 
     return (
         <>
-            <div className='text-white bg-[#601A40] flex flex-col h-[550px] w-1/3 mx-auto justify-center items-center rounded-md'>
+            <div className='text-white bg-[#601A40] flex flex-col h-[550px] md:w-1/3 lg:w-1/4 m-auto my-16 justify-center items-center rounded-md'>
                 <h2 className='mb-8 text-3xl font-bold'>QUIZ</h2>
                 <p>Loading your experience.Please wait ...</p>
 

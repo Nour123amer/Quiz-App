@@ -5,7 +5,7 @@ export default function About() {
     const navigate = useNavigate();
   return (
     <>
-     <div className='text-white bg-[#601A40] text-left font-semibold h-[550px] w-1/3 mx-auto py-16 px-6 rounded-md'>
+     <div className='text-white bg-[#601A40] text-left font-semibold h-[550px] md:w-1/3 lg:w-1/4 m-auto my-16 py-16 px-6 rounded-md'>
   
         Web development is the work involved in developing a website for the Internet (World Wide Web) 
         or an intranet (a private network).[1] Web development can range from developing a simple
