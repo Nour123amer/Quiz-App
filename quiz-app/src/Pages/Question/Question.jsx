@@ -39,22 +39,19 @@ export default function Question() {
     //   const [question ,setQuestion] = useState(null);
    
    const [currentPage ,setCurrentPage] = useState(0);
-      function goToNextPage(currentPage){
-        setCurrentPage(currentPage+1);
+
+      function goToNextPage(){
+        setCurrentPage(currentPage =>currentPage+1);
         console.log('next');
         
       }
 
-      function goToPreviousPage(currentPage){
-        setCurrentPage(currentPage-1);
+      function goToPreviousPage(){
+        setCurrentPage(currentPage=>currentPage-1);
         console.log('prev');
         
       }
 
-    //   useEffect(()=>{
-    //     setQuestion(questions);
-    //   },[])
-      
       
       return (
     <>
@@ -64,7 +61,9 @@ export default function Question() {
     })):(<h2>Loading ... </h2>)} */}
     
     {questions? (
-    <QuestionCard questionInfo={questions[currentPage ]}  index={currentPage} key={currentPage} nextFn={goToNextPage} prevFn={goToPreviousPage} />
+    <QuestionCard questionInfo={questions[currentPage ]}
+      index={currentPage} key={currentPage} goToNextPage={goToNextPage}
+      goToPreviousPage={goToPreviousPage}  />
 
 ):(<h2>Loading ... </h2>)}
     </div>

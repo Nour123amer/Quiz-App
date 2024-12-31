@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
-      const [error, setError] = useState(null);
+    
       const navigate = useNavigate();
       const phoneRegex = /^(?:\+?(\d{1,3}))?[-.●]?((\(\d{1,4}\))|\d{1,4})[-.●]?\d{1,4}[-.●]?\d{1,9}$/;
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
@@ -22,11 +22,22 @@ export default function Login() {
           password: '',
         },
         validationSchema,
+        onSubmit:(values)=>{
+            console.log(values);
+            navigate('/question')
+          },
+          validateOnMount: true,
       })
+
+      
+  const handleSubmit=(e) =>{
+    e.preventDefault();
+    formik.handleSubmit(e)
+  }
     
     return (
         <>
-            <form className='border  bg-[#601A35] border-gray-500 container w-1/3 mx-auto flex px-4 flex-col h-[550px]  py-8 rounded-md' >
+            <form onSubmit={handleSubmit} className='border  bg-[#601A35] border-gray-500 container w-1/3 mx-auto flex px-4 flex-col h-[550px]  py-8 rounded-md' >
 
                 <div>
                     <input
@@ -59,7 +70,9 @@ export default function Login() {
                 </div>
 
 
-                <button className='bg-white text-purple-800 rounded-md px-2 py-1 w-1/2 mx-auto' onClick={() => { navigate('/question') }}> Login</button>
+                <button 
+                disabled={!formik.isValid || formik.isSubmitting}
+                className='bg-white text-purple-800 rounded-md px-2 py-1 w-1/2 mx-auto'  > Login</button>
             </form>
         </>
     )

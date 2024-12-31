@@ -10,6 +10,7 @@ import { createBrowserRouter, Route, Routes, RouterProvider  } from 'react-route
 import Signup from './Pages/Signup/Signup'
 import Login from './Pages/Login/Login'
 import Question from './Pages/Question/Question'
+import TotalScore from './Pages/TotalScore/TotalScore'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     <Route path='/levels' element={<Levels />} />
     <Route path='/signup' element={<Signup />} />
     <Route path='/login' element={<Login />} />
+    <Route path='/totalscore' element={<TotalScore />} />
     <Route path='/question' element={<Question />} />
     
    </Routes>

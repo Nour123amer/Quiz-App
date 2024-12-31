@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
 export default function Signup() {
-  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
   const phoneRegex = /^(?:\+?(\d{1,3}))?[-.●]?((\(\d{1,4}\))|\d{1,4})[-.●]?\d{1,4}[-.●]?\d{1,9}$/;
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
@@ -20,6 +20,7 @@ export default function Signup() {
 
   })
 
+
   const formik = useFormik({
     initialValues: {
       name: '',
@@ -29,11 +30,21 @@ export default function Signup() {
       repassword: '',
     },
     validationSchema,
+    onSubmit:(values)=>{
+      console.log(values);
+      navigate('/login')
+    },
+    validateOnMount: true,
   })
+
+  const handleSubmit=(e) =>{
+    e.preventDefault();
+    formik.handleSubmit(e)
+  }
 
   return (
     <>
-      <form className='border  bg-[#601A40] border-gray-500 container w-1/3 mx-auto flex px-4 flex-col h-[550px]  py-8 rounded-md' >
+      <form onSubmit={handleSubmit} className='border  bg-[#601A40] border-gray-500 container w-1/3 mx-auto flex px-4 flex-col h-[550px]  py-8 rounded-md' >
         <div>
           <input
             name='name'
@@ -71,7 +82,7 @@ export default function Signup() {
         value={formik.values.phone}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        className='border border-gray-300 px-2 py-1 w-full rounded-md mb-3' type='phone' placeholder='Enter your phone' />
+        className='border border-gray-300 px-2 py-1 w-full rounded-md mb-3' type='tel' placeholder='Enter your phone' />
         {formik.errors.phone && formik.touched.phone? (
           <div className='text-red-600 font-semibold mt-2'>
             *{formik.errors.phone}
@@ -107,7 +118,9 @@ export default function Signup() {
         ):('')}
         </div>
 
-        <button className='bg-white text-purple-800 rounded-md px-2 py-1 w-1/2 mx-auto' onClick={() => { navigate('/login') }}> Sign Up</button>
+        <button type='submit' className='bg-white text-purple-800 rounded-md px-2 py-1 w-1/2 mx-auto' 
+        disabled={!formik.isValid || formik.isSubmitting}
+      > Sign Up</button>
       </form>
     </>
   )
