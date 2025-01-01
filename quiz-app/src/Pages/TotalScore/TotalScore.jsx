@@ -1,11 +1,25 @@
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 export default function TotalScore() {
+    const navigate = useNavigate();
+    const location = useLocation();
+    const totalScore = location.state?.totalScore || 0;
   return (
     <>
-    <div className='border text-white bg-[#601A40] border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 flex-col h-[550px]  py-8 rounded-md'>
-       <p>Your total score is :0</p>
+    <div className='border text-white  bg-[#601A40] relative border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 px-4  h-[550px]  py-8 rounded-md'>
+      <div className='flex justify-center items-center flex-col my-auto h-3/4'>
+         <p className='italic font-bold text-2xl'>Quiz completed!</p>
+       <p className='italic font-semibold text-2xl'>Your total score is : {totalScore}</p>
+      </div>
+      
+
+           <button 
+           onClick={()=>navigate('/question')}
+           className='text-left'><i className="fa-solid fa-arrow-left mt-2 text-2xl font-bold absolute bottom-4 left-2 text-white"></i></button>
     </div>
+
+
     </>
   )
 }

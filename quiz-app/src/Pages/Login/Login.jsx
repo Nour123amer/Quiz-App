@@ -37,7 +37,7 @@ export default function Login() {
     
     return (
         <>
-            <form onSubmit={handleSubmit} className='border  bg-[#601A35] border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 flex-col h-[550px]  py-8 rounded-md' >
+            <form onSubmit={handleSubmit} className='border relative bg-[#601A35] border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 py-16  flex-col h-[550px]   rounded-md' >
 
                 <div>
                     <input
@@ -71,8 +71,14 @@ export default function Login() {
 
 
                 <button 
+                type='submit'
                 disabled={!formik.isValid || formik.isSubmitting}
                 className='bg-white text-[#601A35] rounded-md px-2 py-1 w-1/2 mx-auto'  > Login</button>
+
+          <button 
+           onClick={()=>navigate('/signup')}
+           className='text-left'><i className="fa-solid fa-arrow-left text-2xl absolute bottom-4 left-2 ml-4  mt-6 font-bold  text-white"></i></button>
+       
             </form>
         </>
     )

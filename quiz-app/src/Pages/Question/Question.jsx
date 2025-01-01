@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import QuestionCard from '../../Components/QuestionCard/QuestionCard';
 import { array } from 'yup';
+import {  useNavigate } from 'react-router-dom';
+import TotalScore from '../TotalScore/TotalScore';
 
 let questions = [
   {
@@ -36,8 +38,7 @@ let questions = [
 ]
 
 export default function Question() {
-
-  //   const [question ,setQuestion] = useState(null);
+const navigate = useNavigate();
 
   const [scores, setScores] = useState(new Array(questions.length).fill(0));
   const [currentPage, setCurrentPage] = useState(0);
@@ -46,6 +47,8 @@ export default function Question() {
     if (currentPage < questions.length - 1) {
       setCurrentPage(currentPage => currentPage + 1);
       console.log('next');
+    }else{
+      navigate('/totalscore',{state:{totalScore:calculatedTotalScore()}});
     }
   }
 
@@ -79,12 +82,13 @@ export default function Question() {
   return (
     <>
     
-      <div className=' text-white bg-[#601A40] p-2  container md:w-1/3 lg:w-1/4 m-auto my-16 flex  flex-col h-[550px] rounded-md'>
+      <div className=' text-white bg-[#601A40] p-2 relative container md:w-1/3 lg:w-1/4 m-auto my-16 flex  flex-col h-[550px] rounded-md'>
         {/* {question? (question.map((q)=>{
         return <QuestionCard questionInfo={q} goToNextPage goToPreviousPage id key={q.id} />
     })):(<h2>Loading ... </h2>)} */}
 <div className='border-2 border-white h-full rounded-md p-2'>
         {questions ? (
+          <>
           <QuestionCard questionInfo={questions[currentPage]}
             index={currentPage} key={currentPage}
              goToNextPage={goToNextPage}
@@ -93,10 +97,19 @@ export default function Question() {
              scores={scores} setScores={setScores}
             calculatedTotalScore={calculatedTotalScore} />
 
+      
+            </>
+
         ) : (<h2>Loading ... </h2>)}
   
         <p className='border-2 border-white text-white w-3/4 mx-auto px-2 py-1 rounded-md mt-4 text-center my-4'>{calculatedTotalScore()} / {questions.length}</p>
+        
+          <button 
+           onClick={()=>navigate('/login')}
+           className='text-left'><i className="fa-solid fa-arrow-left text-2xl absolute bottom-4 left-2 ml-4  mt-6 font-bold  text-white"></i></button>
          </div>
+
+       
       </div>
      
 
