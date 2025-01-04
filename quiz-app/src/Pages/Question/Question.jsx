@@ -82,7 +82,7 @@ const navigate = useNavigate();
   return (
     <>
     
-      <div className=' text-white bg-[#601A40] p-2 relative container md:w-1/3 lg:w-1/4 m-auto my-16 flex  flex-col h-[550px] rounded-md'>
+      <div className=' text-white bg-[#0492C2] p-2 relative container md:w-1/3 lg:w-1/4 m-auto my-16 flex  flex-col h-[550px] rounded-md'>
         {/* {question? (question.map((q)=>{
         return <QuestionCard questionInfo={q} goToNextPage goToPreviousPage id key={q.id} />
     })):(<h2>Loading ... </h2>)} */}

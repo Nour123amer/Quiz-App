@@ -8,6 +8,8 @@ export default function Login() {
       const navigate = useNavigate();
       const phoneRegex = /^(?:\+?(\d{1,3}))?[-.●]?((\(\d{1,4}\))|\d{1,4})[-.●]?\d{1,4}[-.●]?\d{1,9}$/;
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
+
     
     
       const validationSchema = Yup.object({
@@ -23,8 +25,18 @@ export default function Login() {
         },
         validationSchema,
         onSubmit:(values)=>{
+
+            const users = JSON.parse(localStorage.getItem('registeredUsers'));
+            console.log(users);
+            
+            const foundUser = users.find((user)=>user.email === values.email && user.password === values.password);
+
             console.log(values);
+            if(foundUser)
             navigate('/question')
+        else
+        console.log('email is not found');
+        
           },
           validateOnMount: true,
       })
@@ -37,7 +49,7 @@ export default function Login() {
     
     return (
         <>
-            <form onSubmit={handleSubmit} className='border relative bg-[#601A35] border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 py-16  flex-col h-[550px]   rounded-md' >
+            <form onSubmit={handleSubmit} className=' relative bg-[#0492C2] container md:w-1/3 lg:w-1/4 m-auto my-16 flex px-4 py-16  flex-col h-[550px]   rounded-md' >
 
                 <div>
                     <input
@@ -73,7 +85,7 @@ export default function Login() {
                 <button 
                 type='submit'
                 disabled={!formik.isValid || formik.isSubmitting}
-                className='bg-white text-[#601A35] rounded-md px-2 py-1 w-1/2 mx-auto'  > Login</button>
+                className='bg-white text-[#0492C2] rounded-md px-2 py-1 w-1/2 mx-auto font-semibold'  > Login</button>
 
           <button 
            onClick={()=>navigate('/signup')}

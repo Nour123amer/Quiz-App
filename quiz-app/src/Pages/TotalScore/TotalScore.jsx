@@ -7,7 +7,7 @@ export default function TotalScore() {
     const totalScore = location.state?.totalScore || 0;
   return (
     <>
-    <div className='border text-white  bg-[#601A40] relative border-gray-500 container md:w-1/3 lg:w-1/4 m-auto my-16 px-4  h-[550px]  py-8 rounded-md'>
+    <div className=' text-white  bg-[#0492C2] relative container md:w-1/3 lg:w-1/4 m-auto my-16 px-4  h-[550px]  py-8 rounded-md'>
       <div className='flex justify-center items-center flex-col my-auto h-3/4'>
          <p className='italic font-bold text-2xl'>Quiz completed!</p>
        <p className='italic font-semibold text-2xl'>Your total score is : {totalScore}</p>

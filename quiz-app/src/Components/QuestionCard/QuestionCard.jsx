@@ -44,7 +44,7 @@ export default function QuestionCard({questionInfo ,goToNextPage ,goToPreviousPa
             })}
         </div>
         {/* <p>{answer}</p> */}
-        <button   disabled={!selectedOption} onClick={calcScore} className='bg-white text-[#601A40] px-2 py-1 rounded-md font-semibold mt-4'>Submit Answer</button>
+        <button   disabled={!selectedOption} onClick={calcScore} className='bg-white text-[#0492C2] px-2 py-1 rounded-md font-semibold mt-4'>Submit Answer</button>
         
         {/* <p className='border-2 border-white text-white px-2 py-1 rounded-md mt-4 text-center my-4'>{`Score: ${score}`}</p> */}
 
